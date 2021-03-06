@@ -6,36 +6,49 @@ export const STORE_RESULT = 'STORE_RESULT';
 export const DELETE_RESULT = 'DELETE_RESULT';
 
 export const increment = () => {
-  return {
-      type: INCREMENT,
-  }
+    return {
+        type: INCREMENT,
+    }
 };
 export const decrement = () => {
-  return {
-      type: DECREMENT,
-  }
+    return {
+        type: DECREMENT,
+    }
 };
 export const add = (value) => {
-  return {
-      type: ADD,
-      value
-  }
+    return {
+        type: ADD,
+        value
+    }
 };
 export const subtract = (value) => {
-  return {
-      type: SUBTRACT,
-      value
-  }
+    return {
+        type: SUBTRACT,
+        value
+    }
 };
+
+const saveResult = (result) => {
+    return {
+        type: STORE_RESULT,
+        result
+    }
+}
+
 export const storeResult = (result) => {
-  return {
-      type: STORE_RESULT,
-      result
-  }
+    return async dispatch => {
+        try {
+            setTimeout(() => {
+                dispatch(saveResult(result));
+            }, 2000);
+        } catch (e) {
+            console.log(e.response);
+        }
+    }
 };
 export const deleteResult = (id) => {
-  return {
-      type: DELETE_RESULT,
-      id
-  }
+    return {
+        type: DELETE_RESULT,
+        id
+    }
 };
